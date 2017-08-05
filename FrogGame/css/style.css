@@ -1,0 +1,39 @@
+body {
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+canvas{
+        border: solid red;
+    top: 0px;
+    position: relative;
+    top: -351px;
+    left: 10px;
+}
+.Contain{
+    position: relative;
+    top: 45px;
+    right: -180px;
+    color: white;
+    font-size: 30px;
+    z-index: 1;
+}
+
+#winTag{
+        z-index: 1;
+    position: relative;
+    top: 66px;
+    left: 20px;
+    font-weight: bolder;
+    color: #E01E47;
+    font-size: 100px;
+    visibility: hidden;
+
+}
+p:nth-child(2){
+    margin-top: 0px;
+}
+p:nth-child(1){
+    margin-bottom: 0px;
+}
