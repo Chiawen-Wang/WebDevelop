@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookShop</title>
+    <link rel="stylesheet" type="text/css" href="css/myStyle.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row" id="header">
+            <h1>Book Shop</h1>
+        </div>
+        <div class="row" id="maincontent">
+        <!--Left side menu (左边菜单栏)-->
+            <div class="col-sm-3 left">
+                <div class="Mymenu">
+                    <div>
+                        <span id='scimark' class="glyphicon glyphicon-plus"></span>
+                        <span> <b id="sci">Science</b></span>
+                        <ul id="sciul">
+                            <li id="Ag">Agricultural Sciences</li>
+                            <li id="Ast">Astronomy</li>
+                            <li id="Behav">Behavioral Sciences</li>
+                            <li id="Ear">Earth Sciences</li>
+                        </ul>
+                    </div>
+
+
+                    <div>
+                         <span id='techmark' class="glyphicon glyphicon-plus"></span>
+                         <span><b id="tech">Technology</b></span>
+                        <ul id="tecul">
+                            <li id="comput">Computer</li>
+                            <li id="net">Network</li>
+                            <li id="math">Maths</li>
+                            <li id="oper">Operating Systems</li>
+                        </ul>
+                    </div>
+                    <div>
+                         <span id='artmark' class="glyphicon glyphicon-plus"></span>
+                         <span><b id="ar">Art</b></span>
+                        <ul id="artul">
+                            <li id="mus">Music</li>
+                            <li id="exhi">Exhibitions</li>
+                            <li id="dr">Drawing</li>
+                            <li id="photo">photography</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span id='novmark' class="glyphicon glyphicon-plus"></span> <span><b id="nov">Novel</b></span>
+                        <ul id="novul">
+                            <li id="act">Action</li>
+                            <li id="comi">Comic</li>
+                            <li id="bio">Biographies</li>
+                            <li id="rom">Romance</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                       <span id='spormark' class="glyphicon glyphicon-plus"></span> <span><b id="spor">Sports</b></span>
+                        <ul id="sporul">
+                            <li id="base">Baseball</li>
+                            <li id="bask">Basketball</li>
+                            <li id="foot">Football</li>
+                            <li id="hoc">Hockey</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        <!--Center is for books' information(书籍细节)-->
+            <div class="col-sm-7" id="middle">
+                <div id="detailContent">
+                <div id="recomend">
+                    <h2>Recomend Books</h2>
+                    <div class="bookInfo" id="recom1" value="29.0" draggable="true" ondragstart="control.dragStart(event)">
+                        <img draggable="false" value="17.3"  src="http://img3x7.ddimg.cn/52/5/23751637-1_l_9.jpg">
+                        <p>浮生六记</p>
+                        <p>Price: ￥17.3</p>
+                    </div>
+                    <div class="bookInfo" id="recom2" value="27.5" draggable="true" ondragstart="control.dragStart(event)">
+                        <img draggable="false" src="http://img3x0.ddimg.cn/49/26/22864990-1_l_2.jpg">
+                        <p>活着</p>
+                        <p>Price: ￥27.5</p>
+                    </div>
+                    <div class="bookInfo" id="recom3" value="22.0" draggable="true" ondragstart="control.dragStart(event)">
+                        <img draggable="false" src="http://img3x7.ddimg.cn/86/32/23694647-1_l_1.jpg">
+                        <p>摆渡人</p>
+                        <p>Price: ￥22.0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Right is for shoping Cart (收银台)-->
+            <div class="col-sm-2" id="right">
+                <div id="Myregister" draggable='false'>
+                    <p id="shoppingcart">Shoping Cart</p>
+                    <div id="Price">
+                        <h3 id="TotalPrice" ondrop="control.nodrop(event)">Total Price: <span id="TPrice">￥0.00</span></h3>
+                    </div>
+
+                    <h3 id="dragTip" ondrop="control.nodrop(event)">Drag what you like here!</h3>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--Script-->
+  <script type="text/javascript" src='js/myjs.js'></script>
+</body>
+</html>
