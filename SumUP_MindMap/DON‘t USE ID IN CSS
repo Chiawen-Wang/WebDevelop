@@ -1,0 +1,55 @@
+[转]Don’t use ID selectors in CSS
+SEMICOLON SNIFFER, ALWAYS FRONT(END)IN
+
+Lately I have been testing out performance among css styles and I found that some of my very smart friends, started asking,”why aren’t you testing using IDs for the unique sections of the page?”.
+
+This wasn’t a hard answer:
+
+The element is not re-usable on that page.
+This is the begining of a downward sprial into specificity
+Usually, IDs refer to something very specific, and abstracting would be tough
+Any performance gains picked up by using id, is negated by adding any other selector to the left fo that id
+Lets delve into each of these issues at more length
+
+The element is not re-usable on that page:
+
+IDs are programmer’s equivalent to singletons.  There can only be one instance on the page.  This means there is no way to re-use it.  It’s usually a one to one relationship, and according to my speed testing, one line of css that’s only usable once is not a good value.  There IS a cost to css bloat.
+
+This is the beginning of a downward spiral into specificty:
+
+There are two main ways of overriding in css.
+
+The cascade: (anything further down the css, can overwrite the previous css rules)
+Specificity: the idea of creating weight by using weighted selectors.
+The reason I say that specificity is a downward spiral is because the only way to overwrite a weighted rule is to add more weight..  plain and simple.  Now I am not just saying this because I heard it somewhere.  I have made and paid for this mistake.
+
+
+.ModuleOfficeList .property-checkbox input
+{display:block;margin-bottom:8px;_border:0px !important;}
+
+.ModuleOfficeList .property-checkbox,
+  .ModuleOfficeList .new-icon,
+  .ModuleOfficeList .open-icon
+{display:block}
+...
+.uid-officelistings .property-checkbox
+{display:none !important; }
+Above is real code from one of my own work from 2005.  As you can see, after awhile, I had to resort to some weighty selectors and the !important rule. This is very bad. Once we get to this point.. it takes us more time to hunt down the parent IDs we are going to use in order to overrule the current specificity. This is not team-friendly and definately not maintainable. Eventually you will specify yourself into a hole, and refactoring out specificity is nothing short of a nightmare.
+
+On the other hand:
+
+I have heard a few reasons why using IDs as selectors is a good thing. I’ll speak on them briefly:
+
+Using ID selectors is faster
+Yes, using ID selectors is faster than using class selectors for the simple reason that there can only be one id within a page. I even prove that is true, however the performance benefit is very small, and as soon as you add any other selector, the performance benefit is lost.
+
+
+#profile-module {...}
+#profile-module li {...}
+.profile-module li {...}
+The second selector is no faster than the third. That’s because CSS is read from right to left. so the
+li
+gets scanned first, which negates the speed of having an ID. Steve Souders explains how selector speed works.
+
+IDs are meant for singletons
+There are times when someone intentionally wants something to be used only once on a page. ID selectors would be useful for that purpose since they would signify once per page. My only argument here is my personal preference of having all my code be re-usable; especially since I don’t see CSS in a “programming language” way.
