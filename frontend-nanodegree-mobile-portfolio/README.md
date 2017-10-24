@@ -1,0 +1,21 @@
+#Optimize index.html
+###For CSS files
+1. For *print.css*, I inlined it to the *index.html*
+2. For *style.css*, I inlined some important part in *index.html*, then I include this css file in the bottom of the html body
+
+###For JS files
+1. I moved all script tag in *index.html*   to the bottom of the body tag and add asyn attribute to each of them
+2. I used Js minifier to compress the *perfmatters.js* file 
+
+###For HTML files
+1. I used online tools to compress index.html file
+2. I used tools to compress images so it won't take too long to download them. 
+
+###Problems
+1. When I use PageSpeed to test index.html, it suggest to use gzip to transfer files, I think those a more back-end side? I indeed managed to use gulp to compress those files to gzip file, but don't know how exactly gzip can be used?
+2. PageSpeed also suggest to use cache to improve the time, but I still confused how to set cache from front-end side?
+
+#Optimize pizza.html
+1. In *main.js* file, around line 508, I altered function *updatePositions()*   it is not wise to using document.documentElement.scrollTop, because it will effect the DOM, so I take it out from the for loop and asigned it to a variable.
+2. For function *changePizzaSizes(size)*, for some reason, reading the *offsetWidth* of each pizza seems takes long time, so I removed this operation, and changed the function into directly change teh width of the pizza
+
