@@ -403,19 +403,20 @@ var resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
   // Changes the value for the size of the pizza above the slider
+  //Using "document.getElementById" to fast the speed
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
-        console.log("bug in changeSliderLabel");
+        document.getElementById("pizzaSize");
     }
   }
 
@@ -459,7 +460,7 @@ function changePizzaSizes(size) {
         newwidth = 249.975;
       else
         newwidth = 375;
-      for(var i = 0; i < randomPizzaContain.length; i++) {
+      for(var i = 0, len = randomPizzaContain.length ; i < len; i++) {   //Store the array length in a local variable, for efficiency purpose
         randomPizzaContain[i].style.width = newwidth + "px";
       }
   }
@@ -476,8 +477,9 @@ function changePizzaSizes(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 100; i++) {
-  var pizzasDiv = document.getElementById("randomPizzas");
+//Move the pizzasDiv out of the loop, so the DOM will be only accessed  once
+var pizzasDiv = document.getElementById("randomPizzas");
+for (var i = 2; i < 100; i++) { 
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
@@ -510,8 +512,8 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   var scroll = (document.documentElement.scrollTop || document.body.scrollTop) / 1250; //It's not smart to caculate  this over and over again, so I move it out
   var temp = 0;
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {   
+  var items = document.getElementsByClassName('mover');
+  for (var i = 0, len = items.length; i < len; i++) {   
     var phase = Math.sin(scroll+temp);
     temp++;
     if(temp === 5)
@@ -536,15 +538,18 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  for (var i = 0; i < 200; i++) {
-    var elem = document.createElement('img');
+  var rows = window.screen.height / s;
+  var num = rows * cols;
+  var movingPizzas = document.getElementById("movingPizzas1");
+  for (var i = 0, elem; i < num; i++) {    //Learned new trick!!!
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    movingPizzas.appendChild(elem);
   }
   updatePositions();
 });
