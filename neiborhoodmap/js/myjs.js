@@ -3,7 +3,9 @@
    var menuIcon = $('.menu-icon');
    var showMarker = $('#show-listings');
    var hideMarker = $('#hide-listings');
+   var leftmenu = $('leftmenu');
 
+  
 
       // Create a new blank array for all the listing markers.
       var markers = [];
@@ -225,7 +227,7 @@
           data: {param1: 'value1'},
           success: function(response){
             var contentList = response[1];    
-            console.log(contentList.length);
+
             if (contentList.length != 0 ) {
               for (var i = contentList.length - 1; i >= 0; i--) {      
                 contentList[i] = contentList[i].replace(/ /g,"_");
@@ -310,7 +312,11 @@ $(window).resize(function(event) {
   }
 });
 
+ function myFocus () {
+   // body... 
 
+   $('.leftmenu').show();
+ }
 
   
 

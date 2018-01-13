@@ -4,11 +4,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="css/mystyle.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <script src="js/jquery-3.2.1.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+     <script src="js/myjs.js"></script>
   </head>
   <body>
       <div class="searchmenu">  
         <button class="btn menu-icon" onclick="showmenu()"><i class="fa fa-bars"></i></button>
-         <input type="text" class="searchinput" id="myInput" onkeyup="myFunction()" placeholder="Search for places..">
+         <input type="text" class="searchinput" id="myInput" onkeyup="myFunction()" onfocus = "myFocus()" onchange="myFocus()" placeholder="Search for places..">
       </div>
         <div class="leftmenu">       
           <div>
@@ -22,9 +25,8 @@
         <div id="map"></div>
     
    
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
-           <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-     <script src="js/myjs.js"></script>
+  
+          
  
 
     <script async defer
